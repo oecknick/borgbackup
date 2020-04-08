@@ -40,13 +40,6 @@
 #Zeitstempel Start in Logdatei eintragen
 echo "Beginn BackupDBs - "$(date) >> borglog.txt
 
-
-day="1d"
-daily="7"
-weekly="4"
-monthly="6"
-testlauf="--dry-run"
-
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_DB="/mnt/backups/repository/AMTDB048_DatenBankBackups"
 REPOSITORY_PDB="/mnt/backups/repository/AMTDB048_ProgressBackups"
@@ -58,8 +51,8 @@ recipient=$(cat .mail 2>&1)
 /usr/bin/borg break-lock $REPOSITORY_DB
 /usr/bin/borg break-lock $REPOSITORY_PDB
 
-#COMPRESSION="zstd,10" #original war zlib,6
-COMPRESSION="zlib,0"
+#Kompression der Backup-Daten
+COMPRESSION="zlib,6"
 
 #Hole das Passwort (benutze NICHT das Admin/Root-Passwort !!)
 PASSWORD=$(cat .wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
@@ -72,15 +65,6 @@ export BORG_PASSPHRASE="$PASSWORD"
 /usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_PDB::AMTDB048_E_HH-{now:%Y-%m-%d-%T} /mnt/ProgressBackups 2>> /var/log/borgbackup/borbackup.log
 
 
-#Aufräumen der Backup-Archive (behalte nur notwendiges)
-#behalte immer das Archiv von gestern
-#behalte zusätzlich ein Archiv der letzten 7 Tage
-#behalte zusätzlich ein Archiv der letzten 4 Wochen
-#behalte zusätzlich ein Archiv der letzten 6 Monate
-#/usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_DB
-#/usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_PDB
-
-
 #Versende Mail ob die Datenbanken erfolgreich gesichert wurden
 if [ $? = 0 ]
 	then
@@ -90,8 +74,6 @@ if [ $? = 0 ]
 	#echo Hatta nich so gut gemacht
 	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < textdateien/misserfolg_DB.txt
 fi
-
-
 
 #Zeitstempel Ende in Logdatei eintragen
 echo "Ende BackupDBs - "$(date) >> borglog.txt

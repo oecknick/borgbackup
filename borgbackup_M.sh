@@ -34,12 +34,14 @@
 # Repositories lokal anlegen:                                              #
 # borg init --encryption=keyfile /mnt/backups/repository                   #
 #                                                                          #
-# PW: gsadqw/#76qwehjwgqe78                                                #
 #                                                                          #
 ############################################################################
 
 #Zeitstempel Start in Logdatei eintragen
 echo "Beginn Backup_M - "$(date) >> borglog.txt
+
+#Wer soll die Mails bekommen
+recipient=$(cat .mail 2>&1)
 
 day="1d"
 daily="7"
@@ -76,10 +78,10 @@ export BORG_PASSPHRASE="$PASSWORD"
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackup LW-M-Sicherungs-Script" admin@g-m-l.de < textdateien/erfolg_M.txt
+	/usr/bin/mail -s "BorgBackup LW-M-Sicherungs-Script" $recipient < textdateien/erfolg_M.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackup LW-M-Sicherungs-Script" admin@g-m-l.de < textdateien/misserfolg_M.txt
+	/usr/bin/mail -s "BorgBackup LW-M-Sicherungs-Script" $recipient < textdateien/misserfolg_M.txt
 fi
 
 

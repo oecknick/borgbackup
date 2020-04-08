@@ -34,10 +34,11 @@
 # Repositories lokal anlegen:                                              #
 # borg init --encryption=keyfile /mnt/backups/repository                   #
 #                                                                          #
-# PW: gsadqw/#76qwehjwgqe78                                                #
 #                                                                          #
 ############################################################################
 
+#Wer soll die Mails bekommen
+recipient=$(cat .mail 2>&1)
 
 day="1d"
 daily="7"
@@ -67,7 +68,6 @@ export BORG_PASSPHRASE="$PASSWORD"
 #Führe die Backups durch
 /usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_O::Daten_in_O-{now:%Y-%m-%d-%T} /mnt/Laufwerk_O
 /usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_M::Daten_in_M-{now:%Y-%m-%d-%T} /mnt/Laufwerk_M
-##/usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_N::Daten_in_N-{now:%Y-%m-%d-%T} /mnt/Laufwerk_N
 /usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_I::Daten_in_I-{now:%Y-%m-%d-%T} /mnt/Laufwerk_I
 /usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_H::Daten_in_H-{now:%Y-%m-%d-%T} /mnt/Laufwerk_H
 /usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_G::Daten_in_G-{now:%Y-%m-%d-%T} /mnt/Laufwerk_G
@@ -83,7 +83,6 @@ export BORG_PASSPHRASE="$PASSWORD"
 #behalte zusätzlich ein Archiv der letzten 6 Monate
 /usr/bin/borg prune  -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_O
 /usr/bin/borg prune  -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_M
-#/usr/bin/borg prune -v --list --keep-within=1d --keep-daily=7 --keep-weekly=4 --keep-monthly=6 $REPOSITORY_N
 /usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_I
 /usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_H
 /usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_G

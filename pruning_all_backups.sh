@@ -34,10 +34,11 @@
 # Repositories lokal anlegen:                                              #
 # borg init --encryption=keyfile /mnt/backups/repository                   #
 #                                                                          #
-# PW: gsadqw/#76qwehjwgqe78                                                #
 #                                                                          #
 ############################################################################
 
+#Wer soll die Mails bekommen
+recipient=$(cat .mail 2>&1)
 
 day="1d"
 daily="7"
@@ -100,10 +101,10 @@ echo "\n\nMelde mich morgen wieder.\nDein liebes BorgBackup-Pruning-Script" >> /
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackupStore Pruning-Script" admin@g-m-l.de < /tmp/space.txt
+	/usr/bin/mail -s "BorgBackupStore Pruning-Script" $recipient < /tmp/space.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackupStore Pruning-Script" admin@g-m-l.de < textdateien/schmutzfink.txt
+	/usr/bin/mail -s "BorgBackupStore Pruning-Script" $recipient < textdateien/schmutzfink.txt
 fi
 
 exit 0

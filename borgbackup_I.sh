@@ -43,20 +43,14 @@ echo "Beginn Backup_I - "$(date) >> borglog.txt
 #Wer soll die Mails bekommen
 recipient=$(cat .mail 2>&1)
 
-day="1d"
-daily="7"
-weekly="4"
-monthly="6"
-testlauf="--dry-run"
-
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_I="/mnt/backups/repository/AMTAS005_Laufwerk_I"
 
 #Eventuelles Lock des Repos entfernen
 /usr/bin/borg break-lock $REPOSITORY_I
 
-COMPRESSION="zstd,10" #original war zlib,6
-#COMPRESSION="zlib,6"
+#Kompression der Daten
+COMPRESSION="lz4"
 
 #Hole das Passwort (benutze NICHT das Admin/Root-Passwort !!)
 PASSWORD=$(cat .wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
@@ -67,13 +61,6 @@ export BORG_PASSPHRASE="$PASSWORD"
 #Führe die Backups durch
 /usr/bin/borg create --files-cache=ctime,size --exclude-caches -vspC $COMPRESSION --exclude '*.lock' --exclude '*/.cache' --exclude '*/tmp/' --exclude '*.dat' --exclude '*.DAT' $REPOSITORY_I::Daten_in_I-{now:%Y-%m-%d-%T} /mnt/Laufwerk_I 2>> /var/log/borgbackup/borbackup.log
 
-
-#Aufräumen der Backup-Archive (behalte nur notwendiges)
-#behalte immer das Archiv von gestern
-#behalte zusätzlich ein Archiv der letzten 7 Tage
-#behalte zusätzlich ein Archiv der letzten 4 Wochen
-#behalte zusätzlich ein Archiv der letzten 6 Monate
-#/usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_I
 
 #Versende Mail ob die Daten erfolgreich gesichert wurden
 if [ $? = 0 ]

@@ -1,0 +1,6 @@
+Borgbackup von Prox4 auf store240 blieb mit Problemen stehen!\n
+eventuell ist das Repository gelocked.\n
+
+Da hilft ein beherztes:\n
+borg break-lock root@172.26.20.14:/mnt/backups/repository/Proxmox4\n
+

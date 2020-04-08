@@ -1,0 +1,1 @@
+Borgbackup von Prox4 auf store240 lief ohne Probleme durch.

@@ -57,7 +57,7 @@ COMPRESSION="zstd,10"
 #COMPRESSION="zlib,6"
 
 #Hole das Passwort (benutze NICHT das Admin/Root-Passwort !!)
-PASSWORD=$(cat ~/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
+PASSWORD=$(cat .wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
 
 #Übergebe das Passwort
 export BORG_PASSPHRASE="$PASSWORD"
@@ -72,6 +72,16 @@ export BORG_PASSPHRASE="$PASSWORD"
 #behalte zusätzlich ein Archiv der letzten 4 Wochen
 #behalte zusätzlich ein Archiv der letzten 6 Monate
 #/usr/bin/borg prune -v --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_H
+
+#Versende Mail ob die Daten erfolgreich gesichert wurden
+if [ $? = 0 ]
+	then
+	#echo Hatta gut gemacht
+	/usr/bin/mail -s "BorgBackup LW-H-Sicherungs-Script" admin@g-m-l.de < textdateien/erfolg_H.txt
+	else
+	#echo Hatta nich so gut gemacht
+	/usr/bin/mail -s "BorgBackup LW-H-Sicherungs-Script" admin@g-m-l.de < textdateien/misserfolg_H.txt
+fi
 
 
 #Zeitstempel Ende in Logdatei eintragen

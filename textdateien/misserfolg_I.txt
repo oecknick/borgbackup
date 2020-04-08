@@ -1,1 +1,7 @@
-Laufwerk I konnte nicht gesichert werden!
+ACHTUNG!!!
+
+Beim sichern von Laufwerk I trat ein Fehler auf!
+
+Kontrolle erforderlich!!!
+
+

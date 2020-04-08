@@ -14,7 +14,6 @@ export BORG_PASSPHRASE="$PASSWORD"
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_O="/mnt/backups/repository/AMTAS005_Laufwerk_O"
 REPOSITORY_M="/mnt/backups/repository/AMTAS005_Laufwerk_M"
-REPOSITORY_N="/mnt/backups/repository/AMTAS005_Laufwerk_N"
 REPOSITORY_I="/mnt/backups/repository/AMTAS005_Laufwerk_I"
 REPOSITORY_H="/mnt/backups/repository/AMTAS005_Laufwerk_H"
 REPOSITORY_G="/mnt/backups/repository/AMTAS005_Laufwerk_G"

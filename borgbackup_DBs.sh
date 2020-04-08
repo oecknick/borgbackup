@@ -52,6 +52,9 @@ testlauf="--dry-run"
 REPOSITORY_DB="/mnt/backups/repository/AMTDB048_DatenBankBackups"
 REPOSITORY_PDB="/mnt/backups/repository/AMTDB048_ProgressBackups"
 
+#Wer soll die Mails bekommen
+recipient=$(cat .mail 2>&1)
+
 #Eventuelles Lock des Repos entfernen
 /usr/bin/borg break-lock $REPOSITORY_DB
 /usr/bin/borg break-lock $REPOSITORY_PDB
@@ -83,10 +86,10 @@ export BORG_PASSPHRASE="$PASSWORD"
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" admin@g-m-l.de < textdateien/erfolg_DB.txt
+	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < textdateien/erfolg_DB.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" admin@g-m-l.de < textdateien/misserfolg_DB.txt
+	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < textdateien/misserfolg_DB.txt
 fi
 
 

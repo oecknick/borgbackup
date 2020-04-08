@@ -77,10 +77,10 @@ export BORG_PASSPHRASE="$PASSWORD"
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" admin@g-m-l.de < textdateien/erfolg_G.txt
+	/usr/bin/mail -s "BorgBackup LW-G-Sicherungs-Script" admin@g-m-l.de < textdateien/erfolg_G.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" admin@g-m-l.de < textdateien/misserfolg_G.txt
+	/usr/bin/mail -s "BorgBackup LW-G-Sicherungs-Script" admin@g-m-l.de < textdateien/misserfolg_G.txt
 fi
 
 

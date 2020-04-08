@@ -34,7 +34,6 @@
 # Repositories lokal anlegen:                                              #
 # borg init --encryption=keyfile /mnt/backups/repository                   #
 #                                                                          #
-# PW: gsadqw/#76qwehjwgqe78                                                #
 #                                                                          #
 ############################################################################
 

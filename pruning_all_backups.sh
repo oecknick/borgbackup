@@ -64,7 +64,7 @@ REPOSITORY_PROX4="root@172.26.20.14:/mnt/backups/repository/Proxmox4"
 COMPRESSION="zstd,15" #original war zlib,6
 
 #Hole das Passwort (benutze NICHT das Admin/Root-Passwort !!)
-PASSWORD=$(cat ~/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
+PASSWORD=$(cat .wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
 
 #Übergebe das Passwort
 export BORG_PASSPHRASE="$PASSWORD"
@@ -103,7 +103,7 @@ if [ $? = 0 ]
 	/usr/bin/mail -s "BorgBackupStore Pruning-Script" admin@g-m-l.de < /tmp/space.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackupStore Pruning-Script" admin@g-m-l.de < /root/schmutzfink.txt
+	/usr/bin/mail -s "BorgBackupStore Pruning-Script" admin@g-m-l.de < textdateien/schmutzfink.txt
 fi
 
 exit 0

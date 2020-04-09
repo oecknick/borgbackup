@@ -68,7 +68,7 @@ REPOSITORY_PROX4="root@172.26.20.14:/mnt/backups/repository/Proxmox4"
 COMPRESSION="zstd,15" #original war zlib,6
 
 #Hole das Passwort (benutze NICHT das Admin/Root-Passwort !!)
-PASSWORD=$(cat /root/borgbackup/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
+PASSWORD=$(cat $PFAD/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
 
 #Übergebe das Passwort
 export BORG_PASSPHRASE="$PASSWORD"

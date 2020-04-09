@@ -55,7 +55,7 @@ recipient=$(cat $PFAD/.mail 2>&1)
 COMPRESSION="zlib,6"
 
 #Hole das Passwort (benutze NICHT das Admin/Root-Passwort !!)
-PASSWORD=$(cat .wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
+PASSWORD=$(cat $PFAD/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1) 
 
 #Übergebe das Passwort
 export BORG_PASSPHRASE="$PASSWORD"

@@ -37,11 +37,11 @@
 #                                                                          #
 ############################################################################
 
-#Zeitstempel Start in Logdatei eintragen
-echo "Beginn Backup_O - "$(date) >> borglog.txt
-
 #Wer soll die Mails bekommen
 recipient=$(cat .mail 2>&1)
+
+#Wo bin ich
+PFAD="/root/borgbackup"
 
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_O="/mnt/backups/repository/AMTAS005_Laufwerk_O"
@@ -66,12 +66,9 @@ export BORG_PASSPHRASE="$PASSWORD"
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackup LW-O-Sicherungs-Script" $recipient < textdateien/erfolg_O.txt
+	/usr/bin/mail -s "BorgBackup LW-O-Sicherungs-Script" $recipient < $PFAD/textdateien/erfolg_O.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackup LW-O-Sicherungs-Script" $recipient < textdateien/misserfolg_O.txt
+	/usr/bin/mail -s "BorgBackup LW-O-Sicherungs-Script" $recipient < $PFAD/textdateien/misserfolg_O.txt
 fi
 
-
-#Zeitstempel Ende in Logdatei eintragen
-echo "Ende Backup_O - "$(date) >> borglog.txt

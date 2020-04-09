@@ -40,6 +40,8 @@
 #Wer soll die Mails bekommen
 recipient=$(cat .mail 2>&1)
 
+PFAD="/root/borgbackup"
+
 day="1d"
 daily="7"
 weekly="4"
@@ -104,7 +106,7 @@ if [ $? = 0 ]
 	/usr/bin/mail -s "BorgBackupStore Pruning-Script" $recipient < /tmp/space.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackupStore Pruning-Script" $recipient < textdateien/schmutzfink.txt
+	/usr/bin/mail -s "BorgBackupStore Pruning-Script" $recipient < $PFAD/textdateien/schmutzfink.txt
 fi
 
 exit 0

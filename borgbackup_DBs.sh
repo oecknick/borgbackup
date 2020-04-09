@@ -37,15 +37,15 @@
 #                                                                          #
 ############################################################################
 
-#Zeitstempel Start in Logdatei eintragen
-echo "Beginn BackupDBs - "$(date) >> borglog.txt
-
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_DB="/mnt/backups/repository/AMTDB048_DatenBankBackups"
 REPOSITORY_PDB="/mnt/backups/repository/AMTDB048_ProgressBackups"
 
 #Wer soll die Mails bekommen
 recipient=$(cat .mail 2>&1)
+
+#wo bin ich
+PFAD="/root/borgbackup"
 
 #Eventuelles Lock des Repos entfernen
 /usr/bin/borg break-lock $REPOSITORY_DB
@@ -69,11 +69,9 @@ export BORG_PASSPHRASE="$PASSWORD"
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < textdateien/erfolg_DB.txt
+	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < $PFAD/textdateien/erfolg_DB.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < textdateien/misserfolg_DB.txt
+	/usr/bin/mail -s "BorgBackup DB-Sicherungs-Script" $recipient < $PFAD/textdateien/misserfolg_DB.txt
 fi
 
-#Zeitstempel Ende in Logdatei eintragen
-echo "Ende BackupDBs - "$(date) >> borglog.txt

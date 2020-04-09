@@ -37,11 +37,11 @@
 #                                                                          #
 ############################################################################
 
-#Zeitstempel Start in Logdatei eintragen
-echo "Beginn Backup_H - "$(date) >> borglog.txt
-
 #Wer soll die Mails bekommen
 recipient=$(cat .mail 2>&1)
+
+#wo bin ich
+PFAD="/root/borgbackup"
 
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_H="/mnt/backups/repository/AMTAS005_Laufwerk_H"
@@ -66,12 +66,9 @@ export BORG_PASSPHRASE="$PASSWORD"
 if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
-	/usr/bin/mail -s "BorgBackup LW-H-Sicherungs-Script" $recipient < textdateien/erfolg_H.txt
+	/usr/bin/mail -s "BorgBackup LW-H-Sicherungs-Script" $recipient < $PFAD/textdateien/erfolg_H.txt
 	else
 	#echo Hatta nich so gut gemacht
-	/usr/bin/mail -s "BorgBackup LW-H-Sicherungs-Script" $recipient < textdateien/misserfolg_H.txt
+	/usr/bin/mail -s "BorgBackup LW-H-Sicherungs-Script" $recipient < $PFAD/textdateien/misserfolg_H.txt
 fi
 
-
-#Zeitstempel Ende in Logdatei eintragen
-echo "Ende Backup_H - "$(date) >> borglog.txt

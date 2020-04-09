@@ -37,11 +37,11 @@
 #                                                                          #
 ############################################################################
 
-#Wer soll die Mails bekommen
-recipient=$(cat .mail 2>&1)
-
 #Wo bin ich
 PFAD="/root/borgbackup"
+
+#Wer soll die Mails bekommen
+recipient=$(cat $PFAD/.mail 2>&1)
 
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_G="/mnt/backups/repository/AMTAS005_Laufwerk_G"

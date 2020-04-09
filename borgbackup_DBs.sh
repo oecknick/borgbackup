@@ -41,11 +41,11 @@
 REPOSITORY_DB="/mnt/backups/repository/AMTDB048_DatenBankBackups"
 REPOSITORY_PDB="/mnt/backups/repository/AMTDB048_ProgressBackups"
 
-#Wer soll die Mails bekommen
-recipient=$(cat .mail 2>&1)
-
-#wo bin ich
+#Wo bin ich
 PFAD="/root/borgbackup"
+
+#Wer soll die Mails bekommen
+recipient=$(cat $PFAD/.mail 2>&1)
 
 #Eventuelles Lock des Repos entfernen
 /usr/bin/borg break-lock $REPOSITORY_DB

@@ -37,10 +37,11 @@
 #                                                                          #
 ############################################################################
 
-#Wer soll die Mails bekommen
-recipient=$(cat .mail 2>&1)
-
+#Wo bin ich
 PFAD="/root/borgbackup"
+
+#Wer soll die Mails bekommen
+recipient=$(cat $PFAD/.mail 2>&1)
 
 day="1d"
 daily="7"

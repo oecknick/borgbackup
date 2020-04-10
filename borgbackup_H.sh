@@ -59,7 +59,7 @@ PASSWORD=$(cat $PFAD/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1)
 export BORG_PASSPHRASE="$PASSWORD"
 
 #Führe die Backups durch
-/usr/bin/borg create -vspC $COMPRESSION $REPOSITORY_H::Daten_in_H-{now:%Y-%m-%d-%T} /mnt/Laufwerk_H 2>> /var/log/borgbackup/borbackup.log
+/usr/bin/borg create -vspC $COMPRESSION --exclude '*.dat' $REPOSITORY_H::Daten_in_H-{now:%Y-%m-%d-%T} /mnt/Laufwerk_H 2>> /var/log/borgbackup/borbackup.log
 
 
 #Versende Mail ob die Daten erfolgreich gesichert wurden

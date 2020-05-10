@@ -31,17 +31,19 @@ export BORG_PASSPHRASE="$PASSWORD"
 #behalte zusätzlich ein Archiv der letzten 7 Tage
 #behalte zusätzlich ein Archiv der letzten 4 Wochen
 #behalte zusätzlich ein Archiv der letzten 6 Monate
-#/usr/bin/borg check -v --verify-data $REPOSITORY_O
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_M
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_I
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_H
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_G
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_K
+/usr/bin/borg check -v --verify-data $REPOSITORY_O &
+/usr/bin/borg check -v --verify-data $REPOSITORY_M &
+/usr/bin/borg check -v --verify-data $REPOSITORY_I &
+/usr/bin/borg check -v --verify-data $REPOSITORY_H
+
+/usr/bin/borg check -v --verify-data $REPOSITORY_G &
+/usr/bin/borg check -v --verify-data $REPOSITORY_K &
 /usr/bin/borg check -v --verify-data $REPOSITORY_DB &
 /usr/bin/borg check -v --verify-data $REPOSITORY_PDB
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_PROX1
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_PROX2
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_PROX3
-#/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_PROX4
+
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX4
 
 

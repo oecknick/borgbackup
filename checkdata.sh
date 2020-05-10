@@ -31,7 +31,7 @@ export BORG_PASSPHRASE="$PASSWORD"
 #behalte zusätzlich ein Archiv der letzten 7 Tage
 #behalte zusätzlich ein Archiv der letzten 4 Wochen
 #behalte zusätzlich ein Archiv der letzten 6 Monate
-/usr/bin/borg check --verify-data $REPOSITORY_DB
+/usr/bin/borg check -v --verify-data $REPOSITORY_PDB
 #/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_M
 #/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_I
 #/usr/bin/borg prune $testlauf --list --keep-within="$day" --keep-daily="$daily" --keep-weekly="$weekly" --keep-monthly="$monthly" $REPOSITORY_H

@@ -28,19 +28,19 @@ export BORG_PASSPHRASE="$PASSWORD"
 #behalte zusätzlich ein Archiv der letzten 7 Tage
 #behalte zusätzlich ein Archiv der letzten 4 Wochen
 #behalte zusätzlich ein Archiv der letzten 6 Monate
-#/usr/bin/borg check -v --verify-data $REPOSITORY_O & 2>> /root/borgbackup/textdateien/backupintegry.txt
-#/usr/bin/borg check -v --verify-data $REPOSITORY_M &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_I &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_H
+/usr/bin/borg check -v --verify-data $REPOSITORY_O 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_M 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_I 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_H 2>> /root/borgbackup/textdateien/backupintegry.txt
 
-#/usr/bin/borg check -v --verify-data $REPOSITORY_G &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_K &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_DB &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_PDB
+/usr/bin/borg check -v --verify-data $REPOSITORY_G 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_K 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_DB 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PDB 2>> /root/borgbackup/textdateien/backupintegry.txt
 
-#/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 &
-#/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
 

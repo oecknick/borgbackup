@@ -41,6 +41,6 @@ export BORG_PASSPHRASE="$PASSWORD"
 #/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 &
 #/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 &
 #/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX4 2>> /root/borgbackup/texttdateien/backupintegry.txt
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
 

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+#Thomas Oecknick 2020
+
 #Alten Inhalt auch /root/borgbackup/textdateien/backupintegry.txt löschen
 echo > /root/borgbackup/textdateien/backupintegry.txt
 

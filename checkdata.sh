@@ -1,10 +1,7 @@
 #!/bin/sh
 
-day="1d"
-daily="7"
-weekly="4"
-monthly="6"
-testlauf="--dry-run"
+#Alten Inhalt auch /root/borgbackup/textdateien/backupintegry.txt löschen
+echo > /root/borgbackup/textdateien/backupintegry.txt
 
 #Sage BORG wo sich das Repository befindet
 REPOSITORY_O="/mnt/backups/repository/AMTAS005_Laufwerk_O"
@@ -31,19 +28,19 @@ export BORG_PASSPHRASE="$PASSWORD"
 #behalte zusätzlich ein Archiv der letzten 7 Tage
 #behalte zusätzlich ein Archiv der letzten 4 Wochen
 #behalte zusätzlich ein Archiv der letzten 6 Monate
-/usr/bin/borg check -v --verify-data $REPOSITORY_O &
-/usr/bin/borg check -v --verify-data $REPOSITORY_M &
-/usr/bin/borg check -v --verify-data $REPOSITORY_I &
-/usr/bin/borg check -v --verify-data $REPOSITORY_H
+#/usr/bin/borg check -v --verify-data $REPOSITORY_O & 2>> /root/borgbackup/textdateien/backupintegry.txt
+#/usr/bin/borg check -v --verify-data $REPOSITORY_M &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_I &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_H
 
-/usr/bin/borg check -v --verify-data $REPOSITORY_G &
-/usr/bin/borg check -v --verify-data $REPOSITORY_K &
-/usr/bin/borg check -v --verify-data $REPOSITORY_DB &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PDB
+#/usr/bin/borg check -v --verify-data $REPOSITORY_G &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_K &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_DB &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_PDB
 
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX4
+#/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 &
+#/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 &
+/usr/bin/borg check -v --verify-data $REPOSITORY_PROX4 2>> /root/borgbackup/texttdateien/backupintegry.txt
 
 

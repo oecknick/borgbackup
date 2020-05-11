@@ -2,7 +2,7 @@
 
 #Thomas Oecknick 2020
 
-#Alten Inhalt auch /root/borgbackup/textdateien/backupintegry.txt löschen
+#Alten Inhalt aus /root/borgbackup/textdateien/backupintegry.txt löschen
 echo > /root/borgbackup/textdateien/backupintegry.txt
 
 #Sage BORG wo sich das Repository befindet
@@ -25,21 +25,21 @@ PASSWORD=$(cat /root/borgbackup/.wuqdwqoudwiquhxiugnfiu43t734t87 2>&1)
 #Übergebe das Passwort
 export BORG_PASSPHRASE="$PASSWORD"
 
-#Aufräumen der Backup-Archive (behalte nur notwendiges)
-#behalte immer das Archiv von gestern
-#behalte zusätzlich ein Archiv der letzten 7 Tage
-#behalte zusätzlich ein Archiv der letzten 4 Wochen
-#behalte zusätzlich ein Archiv der letzten 6 Monate
+#Per Multithreading immer 4 Repos mit einem Rutsch auf Datenintegrität kontrollieren
+
+#Gruppe 1
 /usr/bin/borg check -v --verify-data $REPOSITORY_O 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_M 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_I 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_H 2>> /root/borgbackup/textdateien/backupintegry.txt
 
+#Gruppe 2
 /usr/bin/borg check -v --verify-data $REPOSITORY_G 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_K 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_DB 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_PDB 2>> /root/borgbackup/textdateien/backupintegry.txt
 
+#Gruppe 3
 /usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &

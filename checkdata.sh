@@ -28,21 +28,21 @@ export BORG_PASSPHRASE="$PASSWORD"
 #Per Multithreading immer 4 Repos mit einem Rutsch auf Datenintegrität kontrollieren
 
 #Gruppe 1
-/usr/bin/borg check -v --verify-data $REPOSITORY_O 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_M 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_I 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_H 2>> /root/borgbackup/textdateien/backupintegry.txt
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_O 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_M 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_I 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_H 2>> /root/borgbackup/textdateien/backupintegry.txt
 
 #Gruppe 2
-/usr/bin/borg check -v --verify-data $REPOSITORY_G 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_K 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_DB 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PDB 2>> /root/borgbackup/textdateien/backupintegry.txt
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_G 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_K 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_DB 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_PDB 2>> /root/borgbackup/textdateien/backupintegry.txt
 
 #Gruppe 3
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX1 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX2 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
-/usr/bin/borg check -v --verify-data $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX1 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX2 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
+/usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
 

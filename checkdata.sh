@@ -51,7 +51,5 @@ export BORG_PASSPHRASE="$PASSWORD"
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
-else
-    echo "Heute ist nicht der letzte Sonntag im Monat!"
 fi
-
+#wenn nicht letzter Sonntag im Monat, tue nix

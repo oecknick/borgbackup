@@ -1,6 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
-#Thomas Oecknick 2020
+#Thomas Oecknick 05/2020
+#Kontrolle der Datenintegrität am letzten Sonntag im Monat
+
+
+#Kontrolle ob es der letzte Sonntag im Monat ist
+if [[ $(date -d "$date + 1week" +%d%a) =~ 0[1-7]Sun ]]
+then
 
 #Alten Inhalt aus /root/borgbackup/textdateien/backupintegry.txt löschen
 echo > /root/borgbackup/textdateien/backupintegry.txt
@@ -45,4 +51,7 @@ export BORG_PASSPHRASE="$PASSWORD"
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
+else
+    echo "Heute ist nicht der letzte Sonntag im Monat!"
+fi
 

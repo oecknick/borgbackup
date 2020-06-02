@@ -3,6 +3,11 @@
 #Thomas Oecknick 05/2020
 #Kontrolle der Datenintegrität am letzten Sonntag im Monat
 
+#Wo bin ich
+PFAD="/root/borgbackup"
+
+#Wer soll die Mails bekommen
+recipient=$(cat $PFAD/.mail 2>&1)
 
 #Kontrolle ob es der letzte Sonntag im Monat ist
 if [[ $(date -d "$date + 1week" +%d%a) =~ 0[1-7]Sun ]]
@@ -51,5 +56,15 @@ export BORG_PASSPHRASE="$PASSWORD"
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
+
+  #Versende Mail ob die Daten erfolgreich gesichert wurden
+  if [ $? = 0 ]
+	then
+	#echo Hatta gut gemacht
+	/usr/bin/mail -s "BorgBackup Integritaetscheck" $recipient < $PFAD/textdateien/erfolg_check.txt
+	else
+	#echo Hatta nich so gut gemacht
+	/usr/bin/mail -s "BorgBackup Integritaetscheck" $recipient < $PFAD/textdateien/misserfolg_check.txt
+  fi
 fi
 #wenn nicht letzter Sonntag im Monat, tue nix

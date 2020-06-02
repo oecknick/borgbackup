@@ -56,8 +56,9 @@ export BORG_PASSPHRASE="$PASSWORD"
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX3 2>> /root/borgbackup/textdateien/backupintegry.txt &
 /usr/bin/borg check -v --repository-only --progress $REPOSITORY_PROX4 2>> /root/borgbackup/textdateien/backupintegry.txt
 
+fi
 
-  #Versende Mail ob die Daten erfolgreich gesichert wurden
+#Versende Mail ob die Daten erfolgreich gesichert wurden
   if [ $? = 0 ]
 	then
 	#echo Hatta gut gemacht
@@ -66,5 +67,4 @@ export BORG_PASSPHRASE="$PASSWORD"
 	#echo Hatta nich so gut gemacht
 	/usr/bin/mail -s "BorgBackup Integritaetscheck" $recipient < $PFAD/textdateien/misserfolg_check.txt
   fi
-fi
-#wenn nicht letzter Sonntag im Monat, tue nix
+
